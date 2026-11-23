@@ -1,0 +1,7 @@
+# Keep line endings fixed so the hashes in models/hashes.json match on every machine.
+* text=auto eol=lf
+models/*.txt -text
+frozen/*.txt -text
+*.onnx binary
+*.png binary
+*.parquet binary

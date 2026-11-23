@@ -1,0 +1,649 @@
+{
+  "description": {
+    "role": "unseen secondary dataset (headline external test)",
+    "description": "A different-source test. Its phishing URLs predate the training data, and its presumed-benign class covers 547 registered domains.",
+    "audit_file": "secondary_audit.json"
+  },
+  "dataset": {
+    "name": "Wangchuk, Phishing URL dataset, v1",
+    "doi": "10.17632/3jddhy2f6s.1",
+    "published": "2026-01-09",
+    "licence": "CC BY 4.0",
+    "file": "dataset2.csv",
+    "file_sha256": "fccce1a99282b3cd8a1fe08fa83350fe44f7afc4c8889a6d0a94ef9c4d7897e3",
+    "file_bytes": 11234312,
+    "sha256_matches_published": true,
+    "columns": [
+      "URL",
+      "Label"
+    ],
+    "url_column": "URL",
+    "label_column": "Label",
+    "label_direction": "Label 1 = phishing, Label 0 = legitimate (as shipped; matches the documented class counts)",
+    "label_map_applied": {
+      "1": 1,
+      "0": 0
+    },
+    "legitimate_class_name": "presumed benign"
+  },
+  "class_counts": {
+    "documented": {
+      "legitimate": 94919,
+      "phishing": 54807
+    },
+    "loaded": {
+      "legitimate": 94919,
+      "phishing": 54807
+    },
+    "match": true,
+    "after_deduplication": {
+      "legitimate": 59241,
+      "phishing": 51972
+    },
+    "final_after_overlap_removal": {
+      "legitimate": 59162,
+      "phishing": 38923
+    }
+  },
+  "duplicates": {
+    "rows_as_shipped": 149726,
+    "exact_duplicate_rows_as_shipped": 19949,
+    "duplicate_rows_after_normalization": 38493,
+    "duplicate_rows_dropped_by_class": {
+      "legitimate": 35660,
+      "phishing": 2833
+    },
+    "urls_with_conflicting_labels": 2,
+    "conflicting_rows_dropped": 20,
+    "rows_after_deduplication": 111213
+  },
+  "normalization": {
+    "urls_changed": 37658,
+    "n_whitespace_stripped": 2,
+    "n_scheme_added": 0,
+    "n_host_lowercased": 364,
+    "n_punycode_decoded": 47,
+    "n_root_slash_added": 9090,
+    "scheme_added_by_class": {
+      "legitimate": 0,
+      "phishing": 0
+    },
+    "root_slash_added_by_class": {
+      "legitimate": 3513,
+      "phishing": 5577
+    },
+    "strip_query": true,
+    "had_query_by_class": {
+      "legitimate": 21103,
+      "phishing": 6421
+    },
+    "had_query_share_by_class": {
+      "legitimate": 0.222326,
+      "phishing": 0.117157
+    },
+    "query_removed_by_class": {
+      "legitimate": 21492,
+      "phishing": 7017
+    }
+  },
+  "dates": null,
+  "non_page_resources": {
+    "note": "from the URL path: robots.txt, or a file extension in src.data.NON_PAGE_EXTENSIONS",
+    "as_shipped": {
+      "legitimate": {
+        "rows": 94919,
+        "robots_txt": 15611,
+        "robots_txt_share": 0.164467,
+        "other_non_page_resource": 438,
+        "other_non_page_resource_share": 0.004614,
+        "pages": 78870
+      },
+      "phishing": {
+        "rows": 54807,
+        "robots_txt": 4,
+        "robots_txt_share": 7.3e-05,
+        "other_non_page_resource": 13,
+        "other_non_page_resource_share": 0.000237,
+        "pages": 54790
+      }
+    },
+    "final": {
+      "legitimate": {
+        "rows": 59162,
+        "robots_txt": 4571,
+        "robots_txt_share": 0.077262,
+        "other_non_page_resource": 437,
+        "other_non_page_resource_share": 0.007386,
+        "pages": 54154
+      },
+      "phishing": {
+        "rows": 38923,
+        "robots_txt": 4,
+        "robots_txt_share": 0.000103,
+        "other_non_page_resource": 11,
+        "other_non_page_resource_share": 0.000283,
+        "pages": 38908
+      }
+    }
+  },
+  "shape_by_class": {
+    "as_shipped": {
+      "legitimate": {
+        "rows": 94919,
+        "bare_homepage": 0.156323,
+        "non_root_path": 0.843677,
+        "has_query": 0.222326,
+        "robots_txt": 0.164467,
+        "other_non_page_resource": 0.004614,
+        "leading_www": 0.497635,
+        "scheme_as_shipped": {
+          "https": 0.847523,
+          "http": 0.152477
+        },
+        "ends_at_host_as_shipped": 0.037011,
+        "median_url_len": 42.0,
+        "median_path_len": 17.0
+      },
+      "phishing": {
+        "rows": 54807,
+        "bare_homepage": 0.471582,
+        "non_root_path": 0.528418,
+        "has_query": 0.117157,
+        "robots_txt": 7.3e-05,
+        "other_non_page_resource": 0.000237,
+        "leading_www": 0.030343,
+        "scheme_as_shipped": {
+          "https": 0.895141,
+          "http": 0.104859
+        },
+        "ends_at_host_as_shipped": 0.101757,
+        "median_url_len": 43.0,
+        "median_path_len": 6.0
+      }
+    },
+    "final": {
+      "legitimate": {
+        "rows": 59162,
+        "bare_homepage": 0.030509,
+        "non_root_path": 0.969491,
+        "has_query": 0.097664,
+        "robots_txt": 0.077262,
+        "other_non_page_resource": 0.007386,
+        "leading_www": 0.450137,
+        "scheme_as_shipped": {
+          "https": 0.865572,
+          "http": 0.134428
+        },
+        "ends_at_host_as_shipped": 0.00715,
+        "median_url_len": 54.0,
+        "median_path_len": 29.0
+      },
+      "phishing": {
+        "rows": 38923,
+        "bare_homepage": 0.447191,
+        "non_root_path": 0.552809,
+        "has_query": 0.096884,
+        "robots_txt": 0.000103,
+        "other_non_page_resource": 0.000283,
+        "leading_www": 0.034684,
+        "scheme_as_shipped": {
+          "https": 0.881587,
+          "http": 0.118413
+        },
+        "ends_at_host_as_shipped": 0.110295,
+        "median_url_len": 44.0,
+        "median_path_len": 6.0
+      }
+    }
+  },
+  "top_registered_domains": {
+    "as_shipped": {
+      "legitimate": [
+        {
+          "registered_domain": "google.com",
+          "rows": 301,
+          "share": 0.003171
+        },
+        {
+          "registered_domain": "discord.gg",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "skype.com",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "researchgate.net",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "dnsmadeeasy.com",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "smartadserver.com",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "arubanetworks.com",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "x.com",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "pubmatic.com",
+          "rows": 300,
+          "share": 0.003161
+        },
+        {
+          "registered_domain": "netflix.com",
+          "rows": 300,
+          "share": 0.003161
+        }
+      ],
+      "legitimate_distinct_domains": 547,
+      "legitimate_top10_share": 0.031616,
+      "phishing": [
+        {
+          "registered_domain": "cf-ipfs.com",
+          "rows": 4353,
+          "share": 0.079424
+        },
+        {
+          "registered_domain": "google.com",
+          "rows": 4026,
+          "share": 0.073458
+        },
+        {
+          "registered_domain": "weeblysite.com",
+          "rows": 3360,
+          "share": 0.061306
+        },
+        {
+          "registered_domain": "cloudflare-ipfs.com",
+          "rows": 3224,
+          "share": 0.058825
+        },
+        {
+          "registered_domain": "pages.dev",
+          "rows": 2551,
+          "share": 0.046545
+        },
+        {
+          "registered_domain": "r2.dev",
+          "rows": 2398,
+          "share": 0.043754
+        },
+        {
+          "registered_domain": "aragon.network",
+          "rows": 2180,
+          "share": 0.039776
+        },
+        {
+          "registered_domain": "web.app",
+          "rows": 2137,
+          "share": 0.038991
+        },
+        {
+          "registered_domain": "firebaseapp.com",
+          "rows": 2098,
+          "share": 0.03828
+        },
+        {
+          "registered_domain": "workers.dev",
+          "rows": 1930,
+          "share": 0.035214
+        }
+      ],
+      "phishing_distinct_domains": 8824,
+      "phishing_top10_share": 0.515573
+    },
+    "final": {
+      "legitimate": [
+        {
+          "registered_domain": "jsdelivr.net",
+          "rows": 300,
+          "share": 0.005071
+        },
+        {
+          "registered_domain": "myshopify.com",
+          "rows": 300,
+          "share": 0.005071
+        },
+        {
+          "registered_domain": "windows.net",
+          "rows": 300,
+          "share": 0.005071
+        },
+        {
+          "registered_domain": "gstatic.com",
+          "rows": 300,
+          "share": 0.005071
+        },
+        {
+          "registered_domain": "blogspot.com",
+          "rows": 300,
+          "share": 0.005071
+        },
+        {
+          "registered_domain": "kaspersky-labs.com",
+          "rows": 300,
+          "share": 0.005071
+        },
+        {
+          "registered_domain": "azureedge.net",
+          "rows": 299,
+          "share": 0.005054
+        },
+        {
+          "registered_domain": "issuu.com",
+          "rows": 299,
+          "share": 0.005054
+        },
+        {
+          "registered_domain": "gcdn.co",
+          "rows": 298,
+          "share": 0.005037
+        },
+        {
+          "registered_domain": "azurefd.net",
+          "rows": 298,
+          "share": 0.005037
+        }
+      ],
+      "legitimate_distinct_domains": 547,
+      "legitimate_top10_share": 0.050607,
+      "phishing": [
+        {
+          "registered_domain": "cf-ipfs.com",
+          "rows": 3383,
+          "share": 0.086915
+        },
+        {
+          "registered_domain": "cloudflare-ipfs.com",
+          "rows": 2802,
+          "share": 0.071988
+        },
+        {
+          "registered_domain": "google.com",
+          "rows": 2493,
+          "share": 0.06405
+        },
+        {
+          "registered_domain": "aragon.network",
+          "rows": 2149,
+          "share": 0.055212
+        },
+        {
+          "registered_domain": "pages.dev",
+          "rows": 1937,
+          "share": 0.049765
+        },
+        {
+          "registered_domain": "workers.dev",
+          "rows": 1652,
+          "share": 0.042443
+        },
+        {
+          "registered_domain": "firebaseapp.com",
+          "rows": 1459,
+          "share": 0.037484
+        },
+        {
+          "registered_domain": "web.app",
+          "rows": 1457,
+          "share": 0.037433
+        },
+        {
+          "registered_domain": "r2.dev",
+          "rows": 1156,
+          "share": 0.0297
+        },
+        {
+          "registered_domain": "weeblysite.com",
+          "rows": 941,
+          "share": 0.024176
+        }
+      ],
+      "phishing_distinct_domains": 8056,
+      "phishing_top10_share": 0.499165
+    }
+  },
+  "single_feature_auc": {
+    "as_shipped": {
+      "has_path": {
+        "auc": 0.34237,
+        "direction_free": 0.65763
+      },
+      "path_len": {
+        "auc": 0.362855,
+        "direction_free": 0.637145
+      },
+      "is_https": {
+        "auc": 0.523809,
+        "direction_free": 0.523809
+      },
+      "has_www": {
+        "auc": 0.266354,
+        "direction_free": 0.733646
+      },
+      "is_https_as_shipped": {
+        "auc": 0.523809,
+        "direction_free": 0.523809
+      }
+    },
+    "final": {
+      "has_path": {
+        "auc": 0.291659,
+        "direction_free": 0.708341
+      },
+      "path_len": {
+        "auc": 0.290583,
+        "direction_free": 0.709417
+      },
+      "is_https": {
+        "auc": 0.508007,
+        "direction_free": 0.508007
+      },
+      "has_www": {
+        "auc": 0.292273,
+        "direction_free": 0.707727
+      },
+      "is_https_as_shipped": {
+        "auc": 0.508007,
+        "direction_free": 0.508007
+      }
+    }
+  },
+  "overlap_with_phreshphish": {
+    "note": "computed on the deduplicated secondary, before removal; every loose match with train or validation is then removed",
+    "vs_train": {
+      "rows": 111213,
+      "exact": 12837,
+      "loose": 13103,
+      "loose_by_class": {
+        "legitimate": 56,
+        "phishing": 13047
+      },
+      "loose_with_different_label": 9
+    },
+    "vs_val": {
+      "rows": 111213,
+      "exact": 16,
+      "loose": 25,
+      "loose_by_class": {
+        "legitimate": 23,
+        "phishing": 2
+      },
+      "loose_with_different_label": 3
+    },
+    "vs_train_and_val": {
+      "rows": 111213,
+      "exact": 12853,
+      "loose": 13128,
+      "loose_by_class": {
+        "legitimate": 79,
+        "phishing": 13049
+      },
+      "loose_with_different_label": 12
+    },
+    "removed": {
+      "rows_in": 111213,
+      "exact_matches": 12853,
+      "loose_matches": 13128,
+      "removed": 13128,
+      "removed_by_class": {
+        "legitimate": 79,
+        "phishing": 13049
+      },
+      "removed_with_different_label": 12,
+      "rows_out": 98085,
+      "class_counts": {
+        "legitimate": 59162,
+        "phishing": 38923
+      }
+    },
+    "remaining_after_removal": {
+      "rows": 98085,
+      "exact": 0,
+      "loose": 0,
+      "loose_by_class": {
+        "legitimate": 0,
+        "phishing": 0
+      },
+      "loose_with_different_label": 0
+    },
+    "registered_domain_vs_train": {
+      "legitimate": {
+        "rows": 59162,
+        "distinct_domains": 547,
+        "share_with_domain_in_any": 0.634529,
+        "share_with_domain_in_legitimate": 0.585291,
+        "share_with_domain_in_phishing": 0.192404,
+        "distinct_domains_seen": 314
+      },
+      "phishing": {
+        "rows": 38923,
+        "distinct_domains": 8056,
+        "share_with_domain_in_any": 0.748992,
+        "share_with_domain_in_legitimate": 0.254091,
+        "share_with_domain_in_phishing": 0.747476,
+        "distinct_domains_seen": 585
+      },
+      "all": {
+        "rows": 98085,
+        "share_with_domain_in_any": 0.679951
+      }
+    },
+    "registered_domain_vs_val": {
+      "legitimate": {
+        "rows": 59162,
+        "distinct_domains": 547,
+        "share_with_domain_in_any": 0.497989,
+        "share_with_domain_in_legitimate": 0.471232,
+        "share_with_domain_in_phishing": 0.082418,
+        "distinct_domains_seen": 249
+      },
+      "phishing": {
+        "rows": 38923,
+        "distinct_domains": 8056,
+        "share_with_domain_in_any": 0.430568,
+        "share_with_domain_in_legitimate": 0.187935,
+        "share_with_domain_in_phishing": 0.426226,
+        "distinct_domains_seen": 181
+      },
+      "all": {
+        "rows": 98085,
+        "share_with_domain_in_any": 0.471234
+      }
+    },
+    "registered_domain_vs_train_and_val": {
+      "legitimate": {
+        "rows": 59162,
+        "distinct_domains": 547,
+        "share_with_domain_in_any": 0.655319,
+        "share_with_domain_in_legitimate": 0.605946,
+        "share_with_domain_in_phishing": 0.198878,
+        "distinct_domains_seen": 322
+      },
+      "phishing": {
+        "rows": 38923,
+        "distinct_domains": 8056,
+        "share_with_domain_in_any": 0.749839,
+        "share_with_domain_in_legitimate": 0.255273,
+        "share_with_domain_in_phishing": 0.747938,
+        "distinct_domains_seen": 598
+      },
+      "all": {
+        "rows": 98085,
+        "share_with_domain_in_any": 0.692828
+      }
+    },
+    "vs_eval_sample_count_only": {
+      "rows": 98085,
+      "exact": 13,
+      "loose": 18,
+      "loose_by_class": {
+        "legitimate": 9,
+        "phishing": 9
+      },
+      "loose_with_different_label": 0
+    }
+  },
+  "phishing_provenance": {
+    "reference": "Kaitholikkal & B, Phishing URL dataset, v1 (Phishing URLs.csv)",
+    "reference_doi": "10.17632/vfszbj9b36.1",
+    "reference_published": "2024-04-02",
+    "reference_rows": 54807,
+    "reference_distinct_urls": 54805,
+    "secondary_phishing_rows": 54807,
+    "secondary_phishing_distinct_urls": 54805,
+    "secondary_phishing_distinct_urls_normalized": 53636,
+    "distinct_urls_in_both_as_shipped": 54786,
+    "distinct_urls_in_both_normalized": 53617,
+    "share_of_secondary_phishing_urls_found_in_reference": 0.999646,
+    "same_list": true,
+    "conclusion": "The secondary's phishing class is the list published in 10.17632/vfszbj9b36.1 on 2024-04-02, so its phishing URLs predate that publication (April 2024)."
+  },
+  "gate2": {
+    "applied_to": "final (deduplicated, PhreshPhish train and validation URLs removed)",
+    "criteria": {
+      "raw_urls_and_labels_recoverable": true,
+      "legitimate_bare_homepage_share": 0.030509,
+      "legitimate_bare_homepage_limit": 0.5,
+      "highest_single_feature_auc": {
+        "feature": "path_len",
+        "auc": 0.290583,
+        "direction_free": 0.709417
+      },
+      "auc_threshold_direction_free": 0.95
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "overlap_with_phiusiil_train_count_only": {
+    "rows": 98085,
+    "exact": 2742,
+    "loose": 2952,
+    "loose_by_class": {
+      "legitimate": 107,
+      "phishing": 2845
+    },
+    "loose_with_different_label": 4
+  },
+  "decision": {
+    "accepted": true,
+    "frozen_on": "2026-11-21",
+    "frozen_before_any_model_was_trained": true,
+    "use": "evaluation only: scored once with frozen models; nothing is fitted or tuned on it"
+  }
+}

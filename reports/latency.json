@@ -1,0 +1,52 @@
+{
+  "measured": "2026-11-23",
+  "environment": "Docker container (image phishing-url-scorer, python:3.11-slim, Docker Desktop 29.9.3 on Windows 11, Linux VM with 8 CPUs) on the development machine (AMD Ryzen 7 7800X3D 8-Core Processor)",
+  "client": "Python on the same machine (Windows 10), outside the container",
+  "base_url": "http://localhost:7860",
+  "urls": 100,
+  "warm_up_requests_not_counted": 5,
+  "requests": "one at a time, in sequence",
+  "note": "Invented URLs on reserved example names. Round trip includes HTTP and the Gradio queue; the in-app times are reported by the app itself, from the plain-HTTP run. Nothing here measures a hosted Space or more than one request at a time.",
+  "round_trip": {
+    "median_ms": 76.08469999831868,
+    "p95_ms": 79.76652500292403,
+    "min_ms": 72.16919999336824,
+    "max_ms": 80.2797000069404
+  },
+  "round_trip_gradio_client": {
+    "median_ms": 373.48194999503903,
+    "p95_ms": 383.9212949947978,
+    "min_ms": 353.0158999928972,
+    "max_ms": 386.6150999965612
+  },
+  "in_app_total": {
+    "median_ms": 28.255492499738466,
+    "p95_ms": 30.40102460054186,
+    "min_ms": 27.206802998989588,
+    "max_ms": 32.33636099866999
+  },
+  "scoring_both_models": {
+    "median_ms": 0.9678055002950714,
+    "p95_ms": 1.4585900498786941,
+    "min_ms": 0.5726989984395914,
+    "max_ms": 1.558140000270214
+  },
+  "explanation_pred_contrib": {
+    "median_ms": 27.147651999257505,
+    "p95_ms": 29.262698249294772,
+    "min_ms": 26.197405999482726,
+    "max_ms": 31.17025700157683
+  },
+  "bands_of_the_invented_urls": {
+    "lgbm": {
+      "Review": 21,
+      "Allow": 72,
+      "Block": 7
+    },
+    "cnn": {
+      "Review": 27,
+      "Allow": 57,
+      "Block": 16
+    }
+  }
+}

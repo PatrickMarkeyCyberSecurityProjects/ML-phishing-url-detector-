@@ -1,0 +1,643 @@
+{
+  "description": {
+    "role": "second external check",
+    "description": "A different-source test collected from December 2020 to November 2021, about three years before the training data begins. Its presumed-benign class comes from Google search results and an older phishing-research dataset.",
+    "audit_file": "secondary_audit_ariyadasa.json"
+  },
+  "dataset": {
+    "name": "Ariyadasa et al., Phishing Websites Dataset, v1 (index.sql)",
+    "doi": "10.17632/n96ncsr5g4.1",
+    "published": "2021-11-16",
+    "licence": "CC BY 4.0",
+    "file": "index.sql",
+    "file_sha256": "3de752bb74332c8f2c01cbc1355b6eda0e2a6d5bcf9a87fddf9b26b5bc8f1ccc",
+    "file_bytes": 10211200,
+    "sha256_matches_published": true,
+    "columns": [
+      "rec_id",
+      "url",
+      "website",
+      "result",
+      "created_date"
+    ],
+    "url_column": "url",
+    "label_column": "result",
+    "label_direction": "result 1 = phishing, result 0 = legitimate (as documented on the Mendeley page)",
+    "label_map_applied": {
+      "1": 1,
+      "0": 0
+    },
+    "legitimate_class_name": "presumed benign"
+  },
+  "class_counts": {
+    "documented": {
+      "legitimate": 50000,
+      "phishing": 30000
+    },
+    "loaded": {
+      "legitimate": 50000,
+      "phishing": 30000
+    },
+    "match": true,
+    "after_deduplication": {
+      "legitimate": 48780,
+      "phishing": 27698
+    },
+    "final_after_overlap_removal": {
+      "legitimate": 48477,
+      "phishing": 27692
+    }
+  },
+  "duplicates": {
+    "rows_as_shipped": 80000,
+    "exact_duplicate_rows_as_shipped": 152,
+    "duplicate_rows_after_normalization": 3415,
+    "duplicate_rows_dropped_by_class": {
+      "legitimate": 1125,
+      "phishing": 2290
+    },
+    "urls_with_conflicting_labels": 4,
+    "conflicting_rows_dropped": 107,
+    "rows_after_deduplication": 76478
+  },
+  "normalization": {
+    "urls_changed": 10536,
+    "n_whitespace_stripped": 0,
+    "n_scheme_added": 0,
+    "n_host_lowercased": 10,
+    "n_punycode_decoded": 52,
+    "n_root_slash_added": 913,
+    "scheme_added_by_class": {
+      "legitimate": 0,
+      "phishing": 0
+    },
+    "root_slash_added_by_class": {
+      "legitimate": 181,
+      "phishing": 732
+    },
+    "strip_query": true,
+    "had_query_by_class": {
+      "legitimate": 3115,
+      "phishing": 6112
+    },
+    "had_query_share_by_class": {
+      "legitimate": 0.0623,
+      "phishing": 0.203733
+    },
+    "query_removed_by_class": {
+      "legitimate": 3276,
+      "phishing": 6319
+    }
+  },
+  "dates": {
+    "rows": 76169,
+    "date_min": "2020-12-01",
+    "date_max": "2021-11-01",
+    "distinct_days": 108
+  },
+  "non_page_resources": {
+    "note": "from the URL path: robots.txt, or a file extension in src.data.NON_PAGE_EXTENSIONS",
+    "as_shipped": {
+      "legitimate": {
+        "rows": 50000,
+        "robots_txt": 0,
+        "robots_txt_share": 0.0,
+        "other_non_page_resource": 22,
+        "other_non_page_resource_share": 0.00044,
+        "pages": 49978
+      },
+      "phishing": {
+        "rows": 30000,
+        "robots_txt": 0,
+        "robots_txt_share": 0.0,
+        "other_non_page_resource": 23,
+        "other_non_page_resource_share": 0.000767,
+        "pages": 29977
+      }
+    },
+    "final": {
+      "legitimate": {
+        "rows": 48477,
+        "robots_txt": 0,
+        "robots_txt_share": 0.0,
+        "other_non_page_resource": 22,
+        "other_non_page_resource_share": 0.000454,
+        "pages": 48455
+      },
+      "phishing": {
+        "rows": 27692,
+        "robots_txt": 0,
+        "robots_txt_share": 0.0,
+        "other_non_page_resource": 23,
+        "other_non_page_resource_share": 0.000831,
+        "pages": 27669
+      }
+    }
+  },
+  "shape_by_class": {
+    "as_shipped": {
+      "legitimate": {
+        "rows": 50000,
+        "bare_homepage": 0.14044,
+        "non_root_path": 0.85956,
+        "has_query": 0.0623,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.00044,
+        "leading_www": 0.5726,
+        "scheme_as_shipped": {
+          "https": 0.88166,
+          "http": 0.11834
+        },
+        "ends_at_host_as_shipped": 0.00362,
+        "median_url_len": 50.0,
+        "median_path_len": 24.0
+      },
+      "phishing": {
+        "rows": 30000,
+        "bare_homepage": 0.2736,
+        "non_root_path": 0.7264,
+        "has_query": 0.203733,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.000767,
+        "leading_www": 0.133767,
+        "scheme_as_shipped": {
+          "https": 0.574667,
+          "http": 0.425333
+        },
+        "ends_at_host_as_shipped": 0.0244,
+        "median_url_len": 46.0,
+        "median_path_len": 14.0
+      }
+    },
+    "final": {
+      "legitimate": {
+        "rows": 48477,
+        "bare_homepage": 0.139901,
+        "non_root_path": 0.860099,
+        "has_query": 0.042989,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.000454,
+        "leading_www": 0.568269,
+        "scheme_as_shipped": {
+          "https": 0.878664,
+          "http": 0.121336
+        },
+        "ends_at_host_as_shipped": 0.003342,
+        "median_url_len": 51.0,
+        "median_path_len": 25.0
+      },
+      "phishing": {
+        "rows": 27692,
+        "bare_homepage": 0.29077,
+        "non_root_path": 0.70923,
+        "has_query": 0.151235,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.000831,
+        "leading_www": 0.136899,
+        "scheme_as_shipped": {
+          "https": 0.582984,
+          "http": 0.417016
+        },
+        "ends_at_host_as_shipped": 0.024736,
+        "median_url_len": 46.0,
+        "median_path_len": 13.0
+      }
+    }
+  },
+  "top_registered_domains": {
+    "as_shipped": {
+      "legitimate": [
+        {
+          "registered_domain": "wikipedia.org",
+          "rows": 1339,
+          "share": 0.02678
+        },
+        {
+          "registered_domain": "youtube.com",
+          "rows": 430,
+          "share": 0.0086
+        },
+        {
+          "registered_domain": "en-academic.com",
+          "rows": 339,
+          "share": 0.00678
+        },
+        {
+          "registered_domain": "facebook.com",
+          "rows": 327,
+          "share": 0.00654
+        },
+        {
+          "registered_domain": "thefreedictionary.com",
+          "rows": 276,
+          "share": 0.00552
+        },
+        {
+          "registered_domain": "fandom.com",
+          "rows": 265,
+          "share": 0.0053
+        },
+        {
+          "registered_domain": "microsoft.com",
+          "rows": 227,
+          "share": 0.00454
+        },
+        {
+          "registered_domain": "twitter.com",
+          "rows": 200,
+          "share": 0.004
+        },
+        {
+          "registered_domain": "google.com",
+          "rows": 199,
+          "share": 0.00398
+        },
+        {
+          "registered_domain": "amazon.com",
+          "rows": 192,
+          "share": 0.00384
+        }
+      ],
+      "legitimate_distinct_domains": 27509,
+      "legitimate_top10_share": 0.07588,
+      "phishing": [
+        {
+          "registered_domain": "000webhostapp.com",
+          "rows": 837,
+          "share": 0.0279
+        },
+        {
+          "registered_domain": "duckdns.org",
+          "rows": 810,
+          "share": 0.027
+        },
+        {
+          "registered_domain": "appspot.com",
+          "rows": 780,
+          "share": 0.026
+        },
+        {
+          "registered_domain": "weebly.com",
+          "rows": 301,
+          "share": 0.010033
+        },
+        {
+          "registered_domain": "blogspot.com",
+          "rows": 272,
+          "share": 0.009067
+        },
+        {
+          "registered_domain": "google.com",
+          "rows": 212,
+          "share": 0.007067
+        },
+        {
+          "registered_domain": "web.app",
+          "rows": 198,
+          "share": 0.0066
+        },
+        {
+          "registered_domain": "plesk.page",
+          "rows": 175,
+          "share": 0.005833
+        },
+        {
+          "registered_domain": "googleapis.com",
+          "rows": 143,
+          "share": 0.004767
+        },
+        {
+          "registered_domain": "yolasite.com",
+          "rows": 142,
+          "share": 0.004733
+        }
+      ],
+      "phishing_distinct_domains": 13585,
+      "phishing_top10_share": 0.129
+    },
+    "final": {
+      "legitimate": [
+        {
+          "registered_domain": "wikipedia.org",
+          "rows": 1300,
+          "share": 0.026817
+        },
+        {
+          "registered_domain": "en-academic.com",
+          "rows": 339,
+          "share": 0.006993
+        },
+        {
+          "registered_domain": "thefreedictionary.com",
+          "rows": 276,
+          "share": 0.005693
+        },
+        {
+          "registered_domain": "fandom.com",
+          "rows": 258,
+          "share": 0.005322
+        },
+        {
+          "registered_domain": "microsoft.com",
+          "rows": 216,
+          "share": 0.004456
+        },
+        {
+          "registered_domain": "twitter.com",
+          "rows": 196,
+          "share": 0.004043
+        },
+        {
+          "registered_domain": "techtarget.com",
+          "rows": 183,
+          "share": 0.003775
+        },
+        {
+          "registered_domain": "amazon.com",
+          "rows": 183,
+          "share": 0.003775
+        },
+        {
+          "registered_domain": "yourdictionary.com",
+          "rows": 151,
+          "share": 0.003115
+        },
+        {
+          "registered_domain": "wordpress.com",
+          "rows": 150,
+          "share": 0.003094
+        }
+      ],
+      "legitimate_distinct_domains": 27399,
+      "legitimate_top10_share": 0.067083,
+      "phishing": [
+        {
+          "registered_domain": "000webhostapp.com",
+          "rows": 829,
+          "share": 0.029936
+        },
+        {
+          "registered_domain": "duckdns.org",
+          "rows": 792,
+          "share": 0.0286
+        },
+        {
+          "registered_domain": "appspot.com",
+          "rows": 751,
+          "share": 0.02712
+        },
+        {
+          "registered_domain": "weebly.com",
+          "rows": 301,
+          "share": 0.01087
+        },
+        {
+          "registered_domain": "blogspot.com",
+          "rows": 260,
+          "share": 0.009389
+        },
+        {
+          "registered_domain": "web.app",
+          "rows": 195,
+          "share": 0.007042
+        },
+        {
+          "registered_domain": "google.com",
+          "rows": 194,
+          "share": 0.007006
+        },
+        {
+          "registered_domain": "yolasite.com",
+          "rows": 141,
+          "share": 0.005092
+        },
+        {
+          "registered_domain": "plesk.page",
+          "rows": 139,
+          "share": 0.00502
+        },
+        {
+          "registered_domain": "googleapis.com",
+          "rows": 133,
+          "share": 0.004803
+        }
+      ],
+      "phishing_distinct_domains": 13582,
+      "phishing_top10_share": 0.134876
+    }
+  },
+  "single_feature_auc": {
+    "as_shipped": {
+      "has_path": {
+        "auc": 0.43342,
+        "direction_free": 0.56658
+      },
+      "path_len": {
+        "auc": 0.383722,
+        "direction_free": 0.616278
+      },
+      "is_https": {
+        "auc": 0.346503,
+        "direction_free": 0.653497
+      },
+      "has_www": {
+        "auc": 0.280583,
+        "direction_free": 0.719417
+      },
+      "is_https_as_shipped": {
+        "auc": 0.346503,
+        "direction_free": 0.653497
+      }
+    },
+    "final": {
+      "has_path": {
+        "auc": 0.424566,
+        "direction_free": 0.575434
+      },
+      "path_len": {
+        "auc": 0.362097,
+        "direction_free": 0.637903
+      },
+      "is_https": {
+        "auc": 0.35216,
+        "direction_free": 0.64784
+      },
+      "has_www": {
+        "auc": 0.284315,
+        "direction_free": 0.715685
+      },
+      "is_https_as_shipped": {
+        "auc": 0.35216,
+        "direction_free": 0.64784
+      }
+    }
+  },
+  "overlap_with_phreshphish": {
+    "note": "computed on the deduplicated secondary, before removal; every loose match with train or validation is then removed",
+    "vs_train": {
+      "rows": 76478,
+      "exact": 222,
+      "loose": 252,
+      "loose_by_class": {
+        "legitimate": 246,
+        "phishing": 6
+      },
+      "loose_with_different_label": 8
+    },
+    "vs_val": {
+      "rows": 76478,
+      "exact": 54,
+      "loose": 57,
+      "loose_by_class": {
+        "legitimate": 57,
+        "phishing": 0
+      },
+      "loose_with_different_label": 0
+    },
+    "vs_train_and_val": {
+      "rows": 76478,
+      "exact": 276,
+      "loose": 309,
+      "loose_by_class": {
+        "legitimate": 303,
+        "phishing": 6
+      },
+      "loose_with_different_label": 8
+    },
+    "removed": {
+      "rows_in": 76478,
+      "exact_matches": 276,
+      "loose_matches": 309,
+      "removed": 309,
+      "removed_by_class": {
+        "legitimate": 303,
+        "phishing": 6
+      },
+      "removed_with_different_label": 8,
+      "rows_out": 76169,
+      "class_counts": {
+        "legitimate": 48477,
+        "phishing": 27692
+      }
+    },
+    "remaining_after_removal": {
+      "rows": 76169,
+      "exact": 0,
+      "loose": 0,
+      "loose_by_class": {
+        "legitimate": 0,
+        "phishing": 0
+      },
+      "loose_with_different_label": 0
+    },
+    "registered_domain_vs_train": {
+      "legitimate": {
+        "rows": 48477,
+        "distinct_domains": 27399,
+        "share_with_domain_in_any": 0.44256,
+        "share_with_domain_in_legitimate": 0.439239,
+        "share_with_domain_in_phishing": 0.043815,
+        "distinct_domains_seen": 6145
+      },
+      "phishing": {
+        "rows": 27692,
+        "distinct_domains": 13582,
+        "share_with_domain_in_any": 0.210205,
+        "share_with_domain_in_legitimate": 0.12231,
+        "share_with_domain_in_phishing": 0.207858,
+        "distinct_domains_seen": 247
+      },
+      "all": {
+        "rows": 76169,
+        "share_with_domain_in_any": 0.358085
+      }
+    },
+    "registered_domain_vs_val": {
+      "legitimate": {
+        "rows": 48477,
+        "distinct_domains": 27399,
+        "share_with_domain_in_any": 0.336118,
+        "share_with_domain_in_legitimate": 0.331931,
+        "share_with_domain_in_phishing": 0.019143,
+        "distinct_domains_seen": 3413
+      },
+      "phishing": {
+        "rows": 27692,
+        "distinct_domains": 13582,
+        "share_with_domain_in_any": 0.148779,
+        "share_with_domain_in_legitimate": 0.078218,
+        "share_with_domain_in_phishing": 0.115593,
+        "distinct_domains_seen": 119
+      },
+      "all": {
+        "rows": 76169,
+        "share_with_domain_in_any": 0.268009
+      }
+    },
+    "registered_domain_vs_train_and_val": {
+      "legitimate": {
+        "rows": 48477,
+        "distinct_domains": 27399,
+        "share_with_domain_in_any": 0.460342,
+        "share_with_domain_in_legitimate": 0.456381,
+        "share_with_domain_in_phishing": 0.048147,
+        "distinct_domains_seen": 6673
+      },
+      "phishing": {
+        "rows": 27692,
+        "distinct_domains": 13582,
+        "share_with_domain_in_any": 0.212408,
+        "share_with_domain_in_legitimate": 0.124549,
+        "share_with_domain_in_phishing": 0.209988,
+        "distinct_domains_seen": 259
+      },
+      "all": {
+        "rows": 76169,
+        "share_with_domain_in_any": 0.370203
+      }
+    },
+    "vs_eval_sample_count_only": {
+      "rows": 76169,
+      "exact": 38,
+      "loose": 40,
+      "loose_by_class": {
+        "legitimate": 39,
+        "phishing": 1
+      },
+      "loose_with_different_label": 0
+    }
+  },
+  "phishing_provenance": null,
+  "gate2": {
+    "applied_to": "final (deduplicated, PhreshPhish train and validation URLs removed)",
+    "criteria": {
+      "raw_urls_and_labels_recoverable": true,
+      "legitimate_bare_homepage_share": 0.139901,
+      "legitimate_bare_homepage_limit": 0.5,
+      "highest_single_feature_auc": {
+        "feature": "has_www",
+        "auc": 0.284315,
+        "direction_free": 0.715685
+      },
+      "auc_threshold_direction_free": 0.95
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "overlap_with_phiusiil_train_count_only": {
+    "rows": 76169,
+    "exact": 443,
+    "loose": 493,
+    "loose_by_class": {
+      "legitimate": 467,
+      "phishing": 26
+    },
+    "loose_with_different_label": 4
+  },
+  "decision": {
+    "accepted": true,
+    "frozen_on": "2026-11-21",
+    "frozen_before_any_model_was_trained": true,
+    "use": "evaluation only: scored once with frozen models; nothing is fitted or tuned on it"
+  }
+}

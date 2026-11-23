@@ -1,0 +1,31 @@
+{
+  "decided": "2026-11-21, after the test results had been seen (docs/design_decisions.md, section 6)",
+  "fitted_on": "validation set only",
+  "target_max_fpr": 0.01,
+  "rule": "Block if raw >= the frozen block threshold; Review if raw >= review.raw_score; otherwise Allow",
+  "note": "Calibrated scores are not real-world probabilities.",
+  "models": {
+    "lgbm": {
+      "raw_score": 1.850153777969586,
+      "target_max_fpr": 0.01,
+      "validation_fpr": 0.009999824564481325,
+      "validation_tpr": 0.5642361111111112,
+      "validation_false_positives": 570,
+      "validation_true_positives": 10725,
+      "calibrated_score": 0.8085443037974683
+    },
+    "cnn": {
+      "raw_score": 0.5917470455169678,
+      "target_max_fpr": 0.01,
+      "validation_fpr": 0.009999824564481325,
+      "validation_tpr": 0.6771885521885522,
+      "validation_false_positives": 570,
+      "validation_true_positives": 12872,
+      "calibrated_score": 0.6262626262626263
+    }
+  },
+  "validation_rows": {
+    "legitimate": 57001,
+    "phishing": 19008
+  }
+}

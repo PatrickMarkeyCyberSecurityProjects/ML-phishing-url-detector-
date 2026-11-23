@@ -1,0 +1,17 @@
+{
+  "dataset": "PhiUSIIL (UCI id 967), every row as shipped, labels flipped to 1 = phishing",
+  "rule": "Legitimate if the URL is exactly https://www.<host> as shipped, otherwise phishing",
+  "learning": "none",
+  "rows": 235795,
+  "legitimate": 134850,
+  "phishing": 100945,
+  "counts": {
+    "legitimate_called_legitimate": 134850,
+    "legitimate_called_phishing": 0,
+    "phishing_called_phishing": 100318,
+    "phishing_called_legitimate": 627
+  },
+  "correct": 235168,
+  "accuracy": 0.997340910536695,
+  "written_by": "notebooks/01_data.ipynb, section 1"
+}

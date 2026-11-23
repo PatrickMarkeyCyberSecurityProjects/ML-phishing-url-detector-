@@ -1,0 +1,285 @@
+{
+  "note": "Invented URLs on reserved example domains, scored by the frozen models in notebook 04.",
+  "urls": [
+    {
+      "url": "https://www.example.com",
+      "main_track_url": "https://www.example.com/",
+      "lgbm": {
+        "raw_score": -1.1553819157182135,
+        "calibrated_score": 0.1931119311193112,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -4.268039226531982,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://www.example.com/",
+      "main_track_url": "https://www.example.com/",
+      "lgbm": {
+        "raw_score": -1.1553819157182135,
+        "calibrated_score": 0.1931119311193112,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -4.268039226531982,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "example.org/about/team",
+      "main_track_url": "https://example.org/about/team",
+      "lgbm": {
+        "raw_score": -2.5118161401644197,
+        "calibrated_score": 0.10071656050955415,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -4.713886260986328,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://docs.example.net/guides/getting-started/installation.html",
+      "main_track_url": "https://docs.example.net/guides/getting-started/installation.html",
+      "lgbm": {
+        "raw_score": -4.658389766340284,
+        "calibrated_score": 0.08173213440605774,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -3.0248806476593018,
+        "calibrated_score": 0.11425206124852769,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://shop.example.com/products/item-48213?ref=newsletter&utm_source=mail",
+      "main_track_url": "https://shop.example.com/products/item-48213",
+      "lgbm": {
+        "raw_score": -4.077235117120617,
+        "calibrated_score": 0.08173213440605774,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -5.534659385681152,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "http://secure-login.account-verify.example.top/signin/",
+      "main_track_url": "http://secure-login.account-verify.example.top/signin/",
+      "lgbm": {
+        "raw_score": 5.055831170616611,
+        "calibrated_score": 0.9825870646766169,
+        "verdict": "Block"
+      },
+      "cnn": {
+        "raw_score": 10.740806579589844,
+        "calibrated_score": 0.9971217105263158,
+        "verdict": "Block"
+      }
+    },
+    {
+      "url": "http://paypal.com.account-check.example.xyz/verify/login.php?session=8f2a",
+      "main_track_url": "http://paypal.com.account-check.example.xyz/verify/login.php",
+      "lgbm": {
+        "raw_score": 5.763977369976147,
+        "calibrated_score": 0.9883720930232558,
+        "verdict": "Block"
+      },
+      "cnn": {
+        "raw_score": 10.598976135253906,
+        "calibrated_score": 0.9971217105263158,
+        "verdict": "Block"
+      }
+    },
+    {
+      "url": "https://xn--pypal-4ve.example/",
+      "main_track_url": "https://p\u0430ypal.example/",
+      "lgbm": {
+        "raw_score": 1.8583457847561735,
+        "calibrated_score": 0.8085443037974683,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": 2.5557525157928467,
+        "calibrated_score": 0.91875,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "http://192.0.2.44/wp-admin/update/index.html",
+      "main_track_url": "http://192.0.2.44/wp-admin/update/index.html",
+      "lgbm": {
+        "raw_score": 5.221068420724338,
+        "calibrated_score": 0.9825870646766169,
+        "verdict": "Block"
+      },
+      "cnn": {
+        "raw_score": 11.089110374450684,
+        "calibrated_score": 0.9971217105263158,
+        "verdict": "Block"
+      }
+    },
+    {
+      "url": "https://storage.example.dev/ipfs/bafybeigdyrztexample/index.html",
+      "main_track_url": "https://storage.example.dev/ipfs/bafybeigdyrztexample/index.html",
+      "lgbm": {
+        "raw_score": 1.4185451266819549,
+        "calibrated_score": 0.680952380952381,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": 9.04643440246582,
+        "calibrated_score": 0.9965870307167235,
+        "verdict": "Block"
+      }
+    },
+    {
+      "url": "https://sites.example.app/view/microsoft-office365-reset",
+      "main_track_url": "https://sites.example.app/view/microsoft-office365-reset",
+      "lgbm": {
+        "raw_score": -1.5874937881133284,
+        "calibrated_score": 0.17183462532299743,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -1.4297844171524048,
+        "calibrated_score": 0.23106060606060605,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "HTTPS://WWW.Example.ORG/News/2025/Article?id=7#comments",
+      "main_track_url": "https://www.example.org/News/2025/Article",
+      "lgbm": {
+        "raw_score": -4.185679546826649,
+        "calibrated_score": 0.08173213440605774,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -7.745998382568359,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://university.example.edu/admissions/apply",
+      "main_track_url": "https://university.example.edu/admissions/apply",
+      "lgbm": {
+        "raw_score": -3.6837623846465326,
+        "calibrated_score": 0.09739724414085503,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -10.244872093200684,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "http://bit.example/3xYz9",
+      "main_track_url": "http://bit.example/3xYz9",
+      "lgbm": {
+        "raw_score": 4.7154896893652625,
+        "calibrated_score": 0.9731147540983607,
+        "verdict": "Block"
+      },
+      "cnn": {
+        "raw_score": 5.924182415008545,
+        "calibrated_score": 0.9894736842105263,
+        "verdict": "Block"
+      }
+    },
+    {
+      "url": "https://a.b.c.d.e.example.co.uk/x/y/z",
+      "main_track_url": "https://a.b.c.d.e.example.co.uk/x/y/z",
+      "lgbm": {
+        "raw_score": -1.4902736688711704,
+        "calibrated_score": 0.17183462532299743,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -3.755197048187256,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "main_track_url": "https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "lgbm": {
+        "raw_score": 0.47873244715217583,
+        "calibrated_score": 0.43084577114427863,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -3.6062986850738525,
+        "calibrated_score": 0.09939148073022312,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "ftp://files.example.com/pub/readme.txt",
+      "main_track_url": "ftp://files.example.com/pub/readme.txt",
+      "lgbm": {
+        "raw_score": -0.3742506735087148,
+        "calibrated_score": 0.32,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -0.35513490438461304,
+        "calibrated_score": 0.47315436241610737,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://user@login.example.com:8443/auth",
+      "main_track_url": "https://user@login.example.com:8443/auth",
+      "lgbm": {
+        "raw_score": 1.021263973551008,
+        "calibrated_score": 0.5761904761904761,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": 3.202563524246216,
+        "calibrated_score": 0.9530726256983241,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "https://www.wikipedia.example/wiki/Phishing",
+      "main_track_url": "https://www.wikipedia.example/wiki/Phishing",
+      "lgbm": {
+        "raw_score": -2.327992703870563,
+        "calibrated_score": 0.10071656050955415,
+        "verdict": "Warn"
+      },
+      "cnn": {
+        "raw_score": -9.35086441040039,
+        "calibrated_score": 0.0877033409130663,
+        "verdict": "Warn"
+      }
+    },
+    {
+      "url": "http://free-gift-card-winner.example.click/claim-now",
+      "main_track_url": "http://free-gift-card-winner.example.click/claim-now",
+      "lgbm": {
+        "raw_score": 5.656151024229149,
+        "calibrated_score": 0.9825870646766169,
+        "verdict": "Block"
+      },
+      "cnn": {
+        "raw_score": 8.46955680847168,
+        "calibrated_score": 0.9965870307167235,
+        "verdict": "Block"
+      }
+    }
+  ]
+}

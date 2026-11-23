@@ -1,0 +1,246 @@
+{
+  "what_this_is": "Arithmetic on measured rates. Not a measurement of any real deployment.",
+  "assumptions": {
+    "monthly_links": 1000000,
+    "phishing_rates": [
+      0.001,
+      0.01
+    ],
+    "phishing_rates_note": "illustrative; the two base rates already used in reports/results.md. The real rate for any organization is not known here.",
+    "bands": "Block = frozen 0.1% threshold; Review = the 1% threshold added after the test results were seen",
+    "each_scenario_assumes": "the organization's links resemble the named test set",
+    "no_adaptive_attacker": "the scenarios assume phishing links are not edited to pass; see under_evasion",
+    "not_estimated": "breaches prevented or money saved: nothing in this project measures either"
+  },
+  "scenarios": {
+    "phreshphish_eval": {
+      "assumes": "links resemble the later-in-time PhreshPhish test (same collector as the training data)",
+      "models": {
+        "lgbm": {
+          "label": "Model A: LightGBM",
+          "phishing_rate_0.001": {
+            "phishing_links": 1000,
+            "legitimate_links": 999000,
+            "phishing_blocked": 335,
+            "legitimate_blocked": 662,
+            "phishing_sent_to_review": 357,
+            "legitimate_sent_to_review": 10818,
+            "phishing_allowed_missed": 309,
+            "share_of_blocked_links_that_are_phishing": 0.33583108507568193,
+            "share_of_reviewed_links_that_are_phishing": 0.0319082757434817,
+            "share_of_all_links_blocked_or_reviewed": 0.012172123439424115,
+            "share_of_phishing_blocked_or_reviewed": 0.6914795851385059,
+            "links_a_slower_check_would_see": 11175,
+            "links_a_slower_check_would_not_need_to_see": 988825
+          },
+          "phishing_rate_0.01": {
+            "phishing_links": 10000,
+            "legitimate_links": 990000,
+            "phishing_blocked": 3349,
+            "legitimate_blocked": 656,
+            "phishing_sent_to_review": 3566,
+            "legitimate_sent_to_review": 10721,
+            "phishing_allowed_missed": 3085,
+            "share_of_blocked_links_that_are_phishing": 0.8361294600414124,
+            "share_of_reviewed_links_that_are_phishing": 0.24958506394149851,
+            "share_of_all_links_blocked_or_reviewed": 0.018292010481758186,
+            "share_of_phishing_blocked_or_reviewed": 0.6914795851385059,
+            "links_a_slower_check_would_see": 14287,
+            "links_a_slower_check_would_not_need_to_see": 985713
+          }
+        },
+        "cnn": {
+          "label": "Model B: character CNN",
+          "phishing_rate_0.001": {
+            "phishing_links": 1000,
+            "legitimate_links": 999000,
+            "phishing_blocked": 556,
+            "legitimate_blocked": 1325,
+            "phishing_sent_to_review": 289,
+            "legitimate_sent_to_review": 12106,
+            "phishing_allowed_missed": 155,
+            "share_of_blocked_links_that_are_phishing": 0.2955517109507193,
+            "share_of_reviewed_links_that_are_phishing": 0.02329846137497076,
+            "share_of_all_links_blocked_or_reviewed": 0.014275439657119922,
+            "share_of_phishing_blocked_or_reviewed": 0.8445582250229748,
+            "links_a_slower_check_would_see": 12395,
+            "links_a_slower_check_would_not_need_to_see": 987605
+          },
+          "phishing_rate_0.01": {
+            "phishing_links": 10000,
+            "legitimate_links": 990000,
+            "phishing_blocked": 5558,
+            "legitimate_blocked": 1313,
+            "phishing_sent_to_review": 2888,
+            "legitimate_sent_to_review": 11997,
+            "phishing_allowed_missed": 1554,
+            "share_of_blocked_links_that_are_phishing": 0.808928652738844,
+            "share_of_reviewed_links_that_are_phishing": 0.1940104323745291,
+            "share_of_all_links_blocked_or_reviewed": 0.021755464750506,
+            "share_of_phishing_blocked_or_reviewed": 0.8445582250229748,
+            "links_a_slower_check_would_see": 14885,
+            "links_a_slower_check_would_not_need_to_see": 985115
+          }
+        }
+      }
+    },
+    "wangchuk": {
+      "assumes": "links resemble the Wangchuk dataset (a different collector; presumed-benign class of 547 domains)",
+      "models": {
+        "lgbm": {
+          "label": "Model A: LightGBM",
+          "phishing_rate_0.001": {
+            "phishing_links": 1000,
+            "legitimate_links": 999000,
+            "phishing_blocked": 455,
+            "legitimate_blocked": 32539,
+            "phishing_sent_to_review": 328,
+            "legitimate_sent_to_review": 92771,
+            "phishing_allowed_missed": 217,
+            "share_of_blocked_links_that_are_phishing": 0.013799623394913536,
+            "share_of_reviewed_links_that_are_phishing": 0.0035234842907198157,
+            "share_of_all_links_blocked_or_reviewed": 0.12609315182029326,
+            "share_of_phishing_blocked_or_reviewed": 0.7833414690542867,
+            "links_a_slower_check_would_see": 93099,
+            "links_a_slower_check_would_not_need_to_see": 906901
+          },
+          "phishing_rate_0.01": {
+            "phishing_links": 10000,
+            "legitimate_links": 990000,
+            "phishing_blocked": 4553,
+            "legitimate_blocked": 32246,
+            "phishing_sent_to_review": 3280,
+            "legitimate_sent_to_review": 91935,
+            "phishing_allowed_missed": 2167,
+            "share_of_blocked_links_that_are_phishing": 0.12372882524441806,
+            "share_of_reviewed_links_that_are_phishing": 0.03445161666006681,
+            "share_of_all_links_blocked_or_reviewed": 0.13201430783141033,
+            "share_of_phishing_blocked_or_reviewed": 0.7833414690542867,
+            "links_a_slower_check_would_see": 95215,
+            "links_a_slower_check_would_not_need_to_see": 904785
+          }
+        },
+        "cnn": {
+          "label": "Model B: character CNN",
+          "phishing_rate_0.001": {
+            "phishing_links": 1000,
+            "legitimate_links": 999000,
+            "phishing_blocked": 815,
+            "legitimate_blocked": 76510,
+            "phishing_sent_to_review": 122,
+            "legitimate_sent_to_review": 113101,
+            "phishing_allowed_missed": 63,
+            "share_of_blocked_links_that_are_phishing": 0.010535610469066054,
+            "share_of_reviewed_links_that_are_phishing": 0.0010769255692587645,
+            "share_of_all_links_blocked_or_reviewed": 0.1905476775780222,
+            "share_of_phishing_blocked_or_reviewed": 0.9365927600647432,
+            "links_a_slower_check_would_see": 113223,
+            "links_a_slower_check_would_not_need_to_see": 886777
+          },
+          "phishing_rate_0.01": {
+            "phishing_links": 10000,
+            "legitimate_links": 990000,
+            "phishing_blocked": 8147,
+            "legitimate_blocked": 75820,
+            "phishing_sent_to_review": 1219,
+            "legitimate_sent_to_review": 112082,
+            "phishing_allowed_missed": 634,
+            "share_of_blocked_links_that_are_phishing": 0.09702134975011864,
+            "share_of_reviewed_links_that_are_phishing": 0.010761797517810123,
+            "share_of_all_links_blocked_or_reviewed": 0.19726880444727196,
+            "share_of_phishing_blocked_or_reviewed": 0.9365927600647432,
+            "links_a_slower_check_would_see": 113302,
+            "links_a_slower_check_would_not_need_to_see": 886698
+          }
+        }
+      }
+    },
+    "ariyadasa": {
+      "assumes": "links resemble the Ariyadasa dataset (a different collector; collected 2020-21)",
+      "models": {
+        "lgbm": {
+          "label": "Model A: LightGBM",
+          "phishing_rate_0.001": {
+            "phishing_links": 1000,
+            "legitimate_links": 999000,
+            "phishing_blocked": 177,
+            "legitimate_blocked": 1937,
+            "phishing_sent_to_review": 395,
+            "legitimate_sent_to_review": 34621,
+            "phishing_allowed_missed": 429,
+            "share_of_blocked_links_that_are_phishing": 0.08365240285956527,
+            "share_of_reviewed_links_that_are_phishing": 0.011270028858954647,
+            "share_of_all_links_blocked_or_reviewed": 0.03712954377199346,
+            "share_of_phishing_blocked_or_reviewed": 0.5714646829409216,
+            "links_a_slower_check_would_see": 35016,
+            "links_a_slower_check_would_not_need_to_see": 964984
+          },
+          "phishing_rate_0.01": {
+            "phishing_links": 10000,
+            "legitimate_links": 990000,
+            "phishing_blocked": 1768,
+            "legitimate_blocked": 1920,
+            "phishing_sent_to_review": 3946,
+            "legitimate_sent_to_review": 34309,
+            "phishing_allowed_missed": 4285,
+            "share_of_blocked_links_that_are_phishing": 0.47948884600959135,
+            "share_of_reviewed_links_that_are_phishing": 0.10315600772214983,
+            "share_of_all_links_blocked_or_reviewed": 0.041943373854596414,
+            "share_of_phishing_blocked_or_reviewed": 0.5714646829409216,
+            "links_a_slower_check_would_see": 38255,
+            "links_a_slower_check_would_not_need_to_see": 961745
+          }
+        },
+        "cnn": {
+          "label": "Model B: character CNN",
+          "phishing_rate_0.001": {
+            "phishing_links": 1000,
+            "legitimate_links": 999000,
+            "phishing_blocked": 469,
+            "legitimate_blocked": 7707,
+            "phishing_sent_to_review": 342,
+            "legitimate_sent_to_review": 41504,
+            "phishing_allowed_missed": 189,
+            "share_of_blocked_links_that_are_phishing": 0.05739204585804146,
+            "share_of_reviewed_links_that_are_phishing": 0.008169701828475819,
+            "share_of_all_links_blocked_or_reviewed": 0.05002235035560465,
+            "share_of_phishing_blocked_or_reviewed": 0.8111367904087823,
+            "links_a_slower_check_would_see": 41846,
+            "links_a_slower_check_would_not_need_to_see": 958154
+          },
+          "phishing_rate_0.01": {
+            "phishing_links": 10000,
+            "legitimate_links": 990000,
+            "phishing_blocked": 4693,
+            "legitimate_blocked": 7638,
+            "phishing_sent_to_review": 3419,
+            "legitimate_sent_to_review": 41130,
+            "phishing_allowed_missed": 1889,
+            "share_of_blocked_links_that_are_phishing": 0.3805746597807391,
+            "share_of_reviewed_links_that_are_phishing": 0.07674022096434638,
+            "share_of_all_links_blocked_or_reviewed": 0.05687923720293057,
+            "share_of_phishing_blocked_or_reviewed": 0.8111367904087823,
+            "links_a_slower_check_would_see": 44549,
+            "links_a_slower_check_would_not_need_to_see": 955451
+          }
+        }
+      }
+    }
+  },
+  "under_evasion": {
+    "lgbm": {
+      "label": "Model A: LightGBM",
+      "assumes": "every phishing link carries the three ordinary-looking edits of the targeted test (www. prefix, https, a benign-looking path); measured on the later-in-time test",
+      "share_of_phishing_blocked": 0.02293116274998906,
+      "share_of_phishing_blocked_or_reviewed": 0.2261170189488425,
+      "share_of_phishing_allowed": 0.7738829810511575
+    },
+    "cnn": {
+      "label": "Model B: character CNN",
+      "assumes": "every phishing link carries the three ordinary-looking edits of the targeted test (www. prefix, https, a benign-looking path); measured on the later-in-time test",
+      "share_of_phishing_blocked": 0.03605969104196753,
+      "share_of_phishing_blocked_or_reviewed": 0.20007877116975187,
+      "share_of_phishing_allowed": 0.7999212288302482
+    }
+  }
+}

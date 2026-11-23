@@ -1,0 +1,39 @@
+# Datasets: downloaded and processed data is never committed
+data/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large or intermediate training artefacts.
+# models/lgbm.txt and models/cnn.onnx ARE tracked: the Space needs them.
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+optuna*.db
+lightning_logs/
+runs/
+
+# Secrets and local settings
+.env
+.env.*
+.huggingface/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# The Space bundle assembled by app/build_space.py
+build/
+design_review/

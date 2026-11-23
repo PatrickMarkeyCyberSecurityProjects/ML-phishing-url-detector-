@@ -1,0 +1,1180 @@
+{
+  "label_convention": "1 = phishing, 0 = legitimate",
+  "roles": {
+    "train": "PhreshPhish train split, rows before the validation cutoff: model fitting",
+    "val": "PhreshPhish train split, most recent days: early stopping, calibration, thresholds",
+    "eval_sample": "pinned 50,000-row sample of the PhreshPhish test split: scored once, at the end"
+  },
+  "splits": {
+    "train": {
+      "rows": 418143,
+      "legitimate": 219226,
+      "phishing": 198917,
+      "phishing_share": 0.475715,
+      "date_min": "2024-07-02",
+      "date_max": "2025-07-28",
+      "distinct_days": 350
+    },
+    "val": {
+      "rows": 76009,
+      "legitimate": 57001,
+      "phishing": 19008,
+      "phishing_share": 0.250076,
+      "date_min": "2025-07-29",
+      "date_max": "2025-09-07",
+      "distinct_days": 41
+    },
+    "eval_sample": {
+      "rows": 50000,
+      "legitimate": 27149,
+      "phishing": 22851,
+      "phishing_share": 0.45702,
+      "date_min": "2025-09-08",
+      "date_max": "2025-12-16",
+      "distinct_days": 62
+    },
+    "test_full": {
+      "rows": 168060,
+      "legitimate": 91260,
+      "phishing": 76800,
+      "phishing_share": 0.45698,
+      "date_min": "2025-09-08",
+      "date_max": "2025-12-16",
+      "distinct_days": 62
+    }
+  },
+  "steps": {
+    "test_harmonize": {
+      "source": "PhreshPhish",
+      "rows_in": 168060,
+      "raw_label_counts": {
+        "benign": 91260,
+        "phish": 76800
+      },
+      "class_counts_after_mapping": {
+        "0": 91260,
+        "1": 76800
+      },
+      "empty_urls_dropped": 0,
+      "rows_out": 168060,
+      "urls_changed": 52673,
+      "n_whitespace_stripped": 1,
+      "n_scheme_added": 1552,
+      "n_host_lowercased": 2,
+      "n_punycode_decoded": 521,
+      "n_query_removed": 18619,
+      "n_root_slash_added": 32461,
+      "scheme_added_by_class": {
+        "legitimate": 1552,
+        "phishing": 0
+      },
+      "root_slash_added_by_class": {
+        "legitimate": 0,
+        "phishing": 32461
+      },
+      "strip_query": true,
+      "had_query_by_class": {
+        "legitimate": 52,
+        "phishing": 18398
+      },
+      "had_query_share_by_class": {
+        "legitimate": 0.00057,
+        "phishing": 0.239557
+      },
+      "query_removed_by_class": {
+        "legitimate": 52,
+        "phishing": 18567
+      }
+    },
+    "eval_collapse": {
+      "rows": 50000,
+      "distinct_urls": 49384,
+      "rows_sharing_a_url": 852,
+      "rows_sharing_a_url_by_class": {
+        "legitimate": 9,
+        "phishing": 843
+      },
+      "urls_shared_by_several_rows": 236,
+      "surplus_rows": 616,
+      "urls_with_conflicting_labels": 0,
+      "rows_with_conflicting_labels": 0
+    },
+    "test_full_collapse": {
+      "rows": 168060,
+      "distinct_urls": 165010,
+      "rows_sharing_a_url": 3787,
+      "rows_sharing_a_url_by_class": {
+        "legitimate": 57,
+        "phishing": 3730
+      },
+      "urls_shared_by_several_rows": 737,
+      "surplus_rows": 3050,
+      "urls_with_conflicting_labels": 0,
+      "rows_with_conflicting_labels": 0
+    },
+    "train_harmonize": {
+      "source": "PhreshPhish",
+      "rows_in": 498255,
+      "raw_label_counts": {
+        "benign": 276729,
+        "phish": 221526
+      },
+      "class_counts_after_mapping": {
+        "0": 276729,
+        "1": 221526
+      },
+      "empty_urls_dropped": 0,
+      "rows_out": 498255,
+      "urls_changed": 34819,
+      "n_whitespace_stripped": 4,
+      "n_scheme_added": 4189,
+      "n_host_lowercased": 58,
+      "n_punycode_decoded": 166,
+      "n_query_removed": 17703,
+      "n_root_slash_added": 12797,
+      "scheme_added_by_class": {
+        "legitimate": 4189,
+        "phishing": 0
+      },
+      "root_slash_added_by_class": {
+        "legitimate": 27,
+        "phishing": 12770
+      },
+      "strip_query": true,
+      "had_query_by_class": {
+        "legitimate": 16,
+        "phishing": 16351
+      },
+      "had_query_share_by_class": {
+        "legitimate": 5.8e-05,
+        "phishing": 0.073811
+      },
+      "query_removed_by_class": {
+        "legitimate": 17,
+        "phishing": 17686
+      }
+    },
+    "train_boundary_drop": {
+      "cut_date": "2025-09-08",
+      "rows_in": 498255,
+      "rows_dropped": 681,
+      "dropped_by_class": {
+        "legitimate": 413,
+        "phishing": 268
+      },
+      "rows_out": 497574,
+      "date_max_after": "2025-09-07"
+    },
+    "train_deduplicate": {
+      "rows_in": 497574,
+      "conflicting_urls": 1,
+      "conflicting_rows_dropped": 2,
+      "duplicate_rows_dropped": 3331,
+      "duplicate_rows_dropped_by_class": {
+        "legitimate": 54,
+        "phishing": 3277
+      },
+      "rows_out": 494241,
+      "class_counts": {
+        "legitimate": 276261,
+        "phishing": 217980
+      }
+    },
+    "train_removal_vs_full_test": {
+      "rows_in": 494241,
+      "exact_matches": 22,
+      "loose_matches": 39,
+      "removed": 39,
+      "removed_by_class": {
+        "legitimate": 12,
+        "phishing": 27
+      },
+      "removed_with_different_label": 8,
+      "rows_out": 494202,
+      "class_counts": {
+        "legitimate": 276249,
+        "phishing": 217953
+      }
+    },
+    "validation_split": {
+      "requested_val_share": 0.15,
+      "val_share": 0.153903,
+      "cutoff_date": "2025-07-29",
+      "rule": "validation = rows dated on or after cutoff_date; training = rows before it",
+      "train": {
+        "rows": 418143,
+        "date_min": "2024-07-02",
+        "date_max": "2025-07-28",
+        "distinct_days": 350,
+        "legitimate": 219226,
+        "phishing": 198917
+      },
+      "val": {
+        "rows": 76059,
+        "date_min": "2025-07-29",
+        "date_max": "2025-09-07",
+        "distinct_days": 41,
+        "legitimate": 57023,
+        "phishing": 19036
+      }
+    },
+    "validation_removal_vs_train": {
+      "rows_in": 76059,
+      "exact_matches": 0,
+      "loose_matches": 50,
+      "removed": 50,
+      "removed_by_class": {
+        "legitimate": 22,
+        "phishing": 28
+      },
+      "removed_with_different_label": 0,
+      "rows_out": 76009,
+      "class_counts": {
+        "legitimate": 57001,
+        "phishing": 19008
+      }
+    }
+  },
+  "temporal": {
+    "train_date_min": "2024-07-02",
+    "train_date_max": "2025-09-07",
+    "test_date_min": "2025-09-08",
+    "test_date_max": "2025-12-16",
+    "overlap": false,
+    "shared_days": [],
+    "train_rows_on_or_after_test_min": {
+      "rows": 0,
+      "legitimate": 0,
+      "phishing": 0
+    },
+    "test_rows_on_or_before_train_max": {
+      "rows": 0,
+      "legitimate": 0,
+      "phishing": 0
+    }
+  },
+  "class_by_month": {
+    "train_and_val": {
+      "2024-07": {
+        "legitimate": 147,
+        "phishing": 52442
+      },
+      "2024-08": {
+        "legitimate": 84640,
+        "phishing": 15150
+      },
+      "2024-09": {
+        "legitimate": 75320,
+        "phishing": 28465
+      },
+      "2024-10": {
+        "legitimate": 14868,
+        "phishing": 23961
+      },
+      "2024-11": {
+        "legitimate": 0,
+        "phishing": 15410
+      },
+      "2024-12": {
+        "legitimate": 0,
+        "phishing": 7798
+      },
+      "2025-01": {
+        "legitimate": 0,
+        "phishing": 22863
+      },
+      "2025-02": {
+        "legitimate": 0,
+        "phishing": 9258
+      },
+      "2025-03": {
+        "legitimate": 0,
+        "phishing": 5641
+      },
+      "2025-04": {
+        "legitimate": 0,
+        "phishing": 2775
+      },
+      "2025-06": {
+        "legitimate": 6756,
+        "phishing": 4688
+      },
+      "2025-07": {
+        "legitimate": 44630,
+        "phishing": 12899
+      },
+      "2025-08": {
+        "legitimate": 41355,
+        "phishing": 13771
+      },
+      "2025-09": {
+        "legitimate": 8511,
+        "phishing": 2804
+      }
+    },
+    "eval_sample": {
+      "2025-09": {
+        "legitimate": 8171,
+        "phishing": 1269
+      },
+      "2025-10": {
+        "legitimate": 18068,
+        "phishing": 15893
+      },
+      "2025-11": {
+        "legitimate": 616,
+        "phishing": 5689
+      },
+      "2025-12": {
+        "legitimate": 294,
+        "phishing": 0
+      }
+    }
+  },
+  "url_overlap_after_removal": {
+    "train_vs_test_full": {
+      "rows": 418143,
+      "exact": 0,
+      "loose": 0,
+      "loose_by_class": {
+        "legitimate": 0,
+        "phishing": 0
+      },
+      "loose_with_different_label": 0
+    },
+    "val_vs_test_full": {
+      "rows": 76009,
+      "exact": 0,
+      "loose": 0,
+      "loose_by_class": {
+        "legitimate": 0,
+        "phishing": 0
+      },
+      "loose_with_different_label": 0
+    },
+    "val_vs_train": {
+      "rows": 76009,
+      "exact": 0,
+      "loose": 0,
+      "loose_by_class": {
+        "legitimate": 0,
+        "phishing": 0
+      },
+      "loose_with_different_label": 0
+    }
+  },
+  "registered_domain_overlap": {
+    "note": "share of evaluation-sample rows whose registered domain occurs in train + val; the registered domain is approximated without a public-suffix list",
+    "eval_sample_vs_train_and_val": {
+      "legitimate": {
+        "rows": 27149,
+        "distinct_domains": 15827,
+        "share_with_domain_in_any": 0.684592,
+        "share_with_domain_in_legitimate": 0.68404,
+        "share_with_domain_in_phishing": 0.059487,
+        "distinct_domains_seen": 7531
+      },
+      "phishing": {
+        "rows": 22851,
+        "distinct_domains": 8511,
+        "share_with_domain_in_any": 0.444751,
+        "share_with_domain_in_legitimate": 0.183537,
+        "share_with_domain_in_phishing": 0.431666,
+        "distinct_domains_seen": 375
+      },
+      "all": {
+        "rows": 50000,
+        "share_with_domain_in_any": 0.57498
+      }
+    },
+    "val_vs_train": {
+      "legitimate": {
+        "rows": 57001,
+        "distinct_domains": 26930,
+        "share_with_domain_in_any": 0.728285,
+        "share_with_domain_in_legitimate": 0.727864,
+        "share_with_domain_in_phishing": 0.058981,
+        "distinct_domains_seen": 12142
+      },
+      "phishing": {
+        "rows": 19008,
+        "distinct_domains": 6641,
+        "share_with_domain_in_any": 0.277199,
+        "share_with_domain_in_legitimate": 0.154356,
+        "share_with_domain_in_phishing": 0.267151,
+        "distinct_domains_seen": 370
+      },
+      "all": {
+        "rows": 76009,
+        "share_with_domain_in_any": 0.61548
+      }
+    }
+  },
+  "shape_by_class": {
+    "train": {
+      "legitimate": {
+        "rows": 219226,
+        "bare_homepage": 0.070913,
+        "non_root_path": 0.929087,
+        "has_query": 6.8e-05,
+        "robots_txt": 1.4e-05,
+        "other_non_page_resource": 0.000702,
+        "leading_www": 0.585104,
+        "scheme_as_shipped": {
+          "https": 0.979241,
+          "none": 0.014496,
+          "http": 0.006263
+        },
+        "ends_at_host_as_shipped": 0.000119,
+        "median_url_len": 56.0,
+        "median_path_len": 30.0
+      },
+      "phishing": {
+        "rows": 198917,
+        "bare_homepage": 0.483674,
+        "non_root_path": 0.516326,
+        "has_query": 0.056481,
+        "robots_txt": 0.000593,
+        "other_non_page_resource": 0.001317,
+        "leading_www": 0.030259,
+        "scheme_as_shipped": {
+          "https": 0.865597,
+          "http": 0.134403
+        },
+        "ends_at_host_as_shipped": 0.05998,
+        "median_url_len": 38.0,
+        "median_path_len": 3.0
+      }
+    },
+    "val": {
+      "legitimate": {
+        "rows": 57001,
+        "bare_homepage": 0.065595,
+        "non_root_path": 0.934405,
+        "has_query": 0.0,
+        "robots_txt": 1.8e-05,
+        "other_non_page_resource": 0.000754,
+        "leading_www": 0.586446,
+        "scheme_as_shipped": {
+          "https": 0.977702,
+          "none": 0.017105,
+          "http": 0.005193
+        },
+        "ends_at_host_as_shipped": 1.8e-05,
+        "median_url_len": 56.0,
+        "median_path_len": 30.0
+      },
+      "phishing": {
+        "rows": 19008,
+        "bare_homepage": 0.352115,
+        "non_root_path": 0.647885,
+        "has_query": 0.113058,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.000316,
+        "leading_www": 0.118213,
+        "scheme_as_shipped": {
+          "https": 0.86048,
+          "http": 0.13952
+        },
+        "ends_at_host_as_shipped": 0.041298,
+        "median_url_len": 47.0,
+        "median_path_len": 10.0
+      }
+    },
+    "eval_sample": {
+      "legitimate": {
+        "rows": 27149,
+        "bare_homepage": 0.091311,
+        "non_root_path": 0.908689,
+        "has_query": 0.000626,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.000516,
+        "leading_www": 0.561899,
+        "scheme_as_shipped": {
+          "https": 0.976242,
+          "none": 0.017754,
+          "http": 0.006004
+        },
+        "ends_at_host_as_shipped": 0.0,
+        "median_url_len": 54.0,
+        "median_path_len": 28.0
+      },
+      "phishing": {
+        "rows": 22851,
+        "bare_homepage": 0.625312,
+        "non_root_path": 0.374688,
+        "has_query": 0.239639,
+        "robots_txt": 0.0,
+        "other_non_page_resource": 0.00105,
+        "leading_www": 0.163188,
+        "scheme_as_shipped": {
+          "https": 0.85086,
+          "http": 0.14914
+        },
+        "ends_at_host_as_shipped": 0.422914,
+        "median_url_len": 36.0,
+        "median_path_len": 1.0
+      }
+    }
+  },
+  "bare_homepage_share": {
+    "train": {
+      "legitimate": 0.070913,
+      "phishing": 0.483674
+    },
+    "val": {
+      "legitimate": 0.065595,
+      "phishing": 0.352115
+    },
+    "eval_sample": {
+      "legitimate": 0.091311,
+      "phishing": 0.625312
+    }
+  },
+  "single_feature_auc": {
+    "train": {
+      "has_path": {
+        "auc": 0.29362,
+        "direction_free": 0.70638
+      },
+      "path_len": {
+        "auc": 0.19209,
+        "direction_free": 0.80791
+      },
+      "is_https": {
+        "auc": 0.43593,
+        "direction_free": 0.56407
+      },
+      "has_www": {
+        "auc": 0.222577,
+        "direction_free": 0.777423
+      },
+      "url_len": {
+        "auc": 0.299221,
+        "direction_free": 0.700779
+      }
+    },
+    "val": {
+      "has_path": {
+        "auc": 0.35674,
+        "direction_free": 0.64326
+      },
+      "path_len": {
+        "auc": 0.320064,
+        "direction_free": 0.679936
+      },
+      "is_https": {
+        "auc": 0.432836,
+        "direction_free": 0.567164
+      },
+      "has_www": {
+        "auc": 0.265884,
+        "direction_free": 0.734116
+      },
+      "url_len": {
+        "auc": 0.4046,
+        "direction_free": 0.5954
+      }
+    },
+    "eval_sample": {
+      "has_path": {
+        "auc": 0.233,
+        "direction_free": 0.767
+      },
+      "path_len": {
+        "auc": 0.202595,
+        "direction_free": 0.797405
+      },
+      "is_https": {
+        "auc": 0.428432,
+        "direction_free": 0.571568
+      },
+      "has_www": {
+        "auc": 0.300644,
+        "direction_free": 0.699356
+      },
+      "url_len": {
+        "auc": 0.284747,
+        "direction_free": 0.715253
+      }
+    }
+  },
+  "all_feature_auc_train_only": {
+    "path_len": {
+      "auc": 0.19209,
+      "direction_free": 0.80791
+    },
+    "path_depth": {
+      "auc": 0.203209,
+      "direction_free": 0.796791
+    },
+    "n_special": {
+      "auc": 0.256286,
+      "direction_free": 0.743714
+    },
+    "host_len": {
+      "auc": 0.740207,
+      "direction_free": 0.740207
+    },
+    "host_entropy": {
+      "auc": 0.74009,
+      "direction_free": 0.74009
+    },
+    "tld_is_common": {
+      "auc": 0.267147,
+      "direction_free": 0.732853
+    },
+    "n_letters": {
+      "auc": 0.284801,
+      "direction_free": 0.715199
+    },
+    "url_len": {
+      "auc": 0.299221,
+      "direction_free": 0.700779
+    },
+    "n_host_hyphens": {
+      "auc": 0.678588,
+      "direction_free": 0.678588
+    },
+    "host_digit_ratio": {
+      "auc": 0.607974,
+      "direction_free": 0.607974
+    },
+    "n_hyphens": {
+      "auc": 0.402877,
+      "direction_free": 0.597123
+    },
+    "tld_is_cc": {
+      "auc": 0.595692,
+      "direction_free": 0.595692
+    },
+    "letter_ratio": {
+      "auc": 0.411339,
+      "direction_free": 0.588661
+    },
+    "url_entropy": {
+      "auc": 0.427008,
+      "direction_free": 0.572992
+    },
+    "is_https": {
+      "auc": 0.43593,
+      "direction_free": 0.56407
+    },
+    "tld_len": {
+      "auc": 0.448436,
+      "direction_free": 0.551564
+    },
+    "digit_ratio": {
+      "auc": 0.54708,
+      "direction_free": 0.54708
+    },
+    "n_dots": {
+      "auc": 0.464496,
+      "direction_free": 0.535504
+    },
+    "n_digits": {
+      "auc": 0.535069,
+      "direction_free": 0.535069
+    },
+    "special_ratio": {
+      "auc": 0.525273,
+      "direction_free": 0.525273
+    },
+    "n_cred_words": {
+      "auc": 0.523395,
+      "direction_free": 0.523395
+    },
+    "n_brand_words": {
+      "auc": 0.520573,
+      "direction_free": 0.520573
+    },
+    "subdomain_depth": {
+      "auc": 0.48996,
+      "direction_free": 0.51004
+    },
+    "n_pct_encoded": {
+      "auc": 0.502909,
+      "direction_free": 0.502909
+    },
+    "host_is_ip": {
+      "auc": 0.501194,
+      "direction_free": 0.501194
+    },
+    "has_at": {
+      "auc": 0.499284,
+      "direction_free": 0.500716
+    },
+    "has_punycode": {
+      "auc": 0.500568,
+      "direction_free": 0.500568
+    },
+    "has_port": {
+      "auc": 0.50033,
+      "direction_free": 0.50033
+    },
+    "has_double_slash": {
+      "auc": 0.500168,
+      "direction_free": 0.500168
+    },
+    "query_len": {
+      "auc": 0.5,
+      "direction_free": 0.5
+    },
+    "n_query_params": {
+      "auc": 0.5,
+      "direction_free": 0.5
+    }
+  },
+  "gate1": {
+    "auc_threshold_direction_free": 0.95,
+    "features_checked": [
+      "has_path",
+      "path_len",
+      "is_https",
+      "has_www",
+      "url_len"
+    ],
+    "checked_on": [
+      "train",
+      "val",
+      "eval_sample"
+    ],
+    "date_overlap": false,
+    "highest_single_feature_auc": {
+      "split": "train",
+      "feature": "path_len",
+      "direction_free": 0.80791
+    },
+    "passed": true,
+    "reasons": []
+  },
+  "main_track": "query string and fragment removed from every URL before deduplication, overlap removal, training and scoring",
+  "eval_sample_collapse": {
+    "rows": 50000,
+    "distinct_urls": 49384,
+    "rows_sharing_a_url": 852,
+    "rows_sharing_a_url_by_class": {
+      "legitimate": 9,
+      "phishing": 843
+    },
+    "urls_shared_by_several_rows": 236,
+    "surplus_rows": 616,
+    "urls_with_conflicting_labels": 0,
+    "rows_with_conflicting_labels": 0
+  },
+  "query_strings": {
+    "note": "share of rows whose shipped URL had a query string",
+    "train_split_as_shipped": {
+      "legitimate": 5.8e-05,
+      "phishing": 0.073811
+    },
+    "test_split_as_shipped": {
+      "legitimate": 0.00057,
+      "phishing": 0.239557
+    }
+  },
+  "feature_pattern_scan": {
+    "scanned_on": "train (fitting part)",
+    "full_url": {
+      "track": "full URL",
+      "rows": {
+        "legitimate": 219226,
+        "phishing": 198917
+      },
+      "rule": "non-zero for under 0.5% of one class and over 5% of the other",
+      "flagged": [
+        "query_len",
+        "n_query_params"
+      ],
+      "flagged_besides_query_features": [],
+      "flagged_on_zero_share": [],
+      "features": {
+        "url_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "path_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "query_len": {
+          "nonzero_share_legitimate": 6.8e-05,
+          "nonzero_share_phishing": 0.056481,
+          "flagged_nonzero": true,
+          "flagged_zero": false
+        },
+        "n_digits": {
+          "nonzero_share_legitimate": 0.369103,
+          "nonzero_share_phishing": 0.440063,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_letters": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_special": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "digit_ratio": {
+          "nonzero_share_legitimate": 0.369103,
+          "nonzero_share_phishing": 0.440063,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "letter_ratio": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "special_ratio": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_digit_ratio": {
+          "nonzero_share_legitimate": 0.043827,
+          "nonzero_share_phishing": 0.255664,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "url_entropy": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_entropy": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "subdomain_depth": {
+          "nonzero_share_legitimate": 0.831886,
+          "nonzero_share_phishing": 0.796528,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "path_depth": {
+          "nonzero_share_legitimate": 0.929069,
+          "nonzero_share_phishing": 0.51625,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_query_params": {
+          "nonzero_share_legitimate": 6.8e-05,
+          "nonzero_share_phishing": 0.056436,
+          "flagged_nonzero": true,
+          "flagged_zero": false
+        },
+        "n_dots": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_hyphens": {
+          "nonzero_share_legitimate": 0.574339,
+          "nonzero_share_phishing": 0.494297,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_host_hyphens": {
+          "nonzero_share_legitimate": 0.051773,
+          "nonzero_share_phishing": 0.400685,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_pct_encoded": {
+          "nonzero_share_legitimate": 0.013479,
+          "nonzero_share_phishing": 0.024025,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "tld_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 0.997612,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "tld_is_common": {
+          "nonzero_share_legitimate": 0.839978,
+          "nonzero_share_phishing": 0.374272,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "tld_is_cc": {
+          "nonzero_share_legitimate": 0.148281,
+          "nonzero_share_phishing": 0.339664,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_is_ip": {
+          "nonzero_share_legitimate": 0.0,
+          "nonzero_share_phishing": 0.002388,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_at": {
+          "nonzero_share_legitimate": 0.003448,
+          "nonzero_share_phishing": 0.006676,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_double_slash": {
+          "nonzero_share_legitimate": 0.000438,
+          "nonzero_share_phishing": 0.001423,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_port": {
+          "nonzero_share_legitimate": 5e-06,
+          "nonzero_share_phishing": 0.000664,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_punycode": {
+          "nonzero_share_legitimate": 0.000155,
+          "nonzero_share_phishing": 0.001292,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "is_https": {
+          "nonzero_share_legitimate": 0.993737,
+          "nonzero_share_phishing": 0.865597,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_brand_words": {
+          "nonzero_share_legitimate": 0.013561,
+          "nonzero_share_phishing": 0.055762,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_cred_words": {
+          "nonzero_share_legitimate": 0.031123,
+          "nonzero_share_phishing": 0.079335,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        }
+      }
+    },
+    "main_track": {
+      "track": "main (query removed)",
+      "rows": {
+        "legitimate": 219226,
+        "phishing": 198917
+      },
+      "rule": "non-zero for under 0.5% of one class and over 5% of the other",
+      "flagged": [],
+      "flagged_besides_query_features": [],
+      "flagged_on_zero_share": [],
+      "features": {
+        "url_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "path_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "query_len": {
+          "nonzero_share_legitimate": 0.0,
+          "nonzero_share_phishing": 0.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_digits": {
+          "nonzero_share_legitimate": 0.369067,
+          "nonzero_share_phishing": 0.431547,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_letters": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_special": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "digit_ratio": {
+          "nonzero_share_legitimate": 0.369067,
+          "nonzero_share_phishing": 0.431547,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "letter_ratio": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "special_ratio": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_digit_ratio": {
+          "nonzero_share_legitimate": 0.043827,
+          "nonzero_share_phishing": 0.255664,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "url_entropy": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_entropy": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "subdomain_depth": {
+          "nonzero_share_legitimate": 0.831886,
+          "nonzero_share_phishing": 0.796528,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "path_depth": {
+          "nonzero_share_legitimate": 0.929069,
+          "nonzero_share_phishing": 0.51625,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_query_params": {
+          "nonzero_share_legitimate": 0.0,
+          "nonzero_share_phishing": 0.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_dots": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 1.0,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_hyphens": {
+          "nonzero_share_legitimate": 0.574334,
+          "nonzero_share_phishing": 0.490888,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_host_hyphens": {
+          "nonzero_share_legitimate": 0.051773,
+          "nonzero_share_phishing": 0.400685,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_pct_encoded": {
+          "nonzero_share_legitimate": 0.013447,
+          "nonzero_share_phishing": 0.019325,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "tld_len": {
+          "nonzero_share_legitimate": 1.0,
+          "nonzero_share_phishing": 0.997612,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "tld_is_common": {
+          "nonzero_share_legitimate": 0.839978,
+          "nonzero_share_phishing": 0.374272,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "tld_is_cc": {
+          "nonzero_share_legitimate": 0.148281,
+          "nonzero_share_phishing": 0.339664,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "host_is_ip": {
+          "nonzero_share_legitimate": 0.0,
+          "nonzero_share_phishing": 0.002388,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_at": {
+          "nonzero_share_legitimate": 0.003448,
+          "nonzero_share_phishing": 0.002016,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_double_slash": {
+          "nonzero_share_legitimate": 0.000438,
+          "nonzero_share_phishing": 0.000774,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_port": {
+          "nonzero_share_legitimate": 5e-06,
+          "nonzero_share_phishing": 0.000664,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "has_punycode": {
+          "nonzero_share_legitimate": 0.000155,
+          "nonzero_share_phishing": 0.001292,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "is_https": {
+          "nonzero_share_legitimate": 0.993737,
+          "nonzero_share_phishing": 0.865597,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_brand_words": {
+          "nonzero_share_legitimate": 0.013548,
+          "nonzero_share_phishing": 0.054711,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        },
+        "n_cred_words": {
+          "nonzero_share_legitimate": 0.031119,
+          "nonzero_share_phishing": 0.077962,
+          "flagged_nonzero": false,
+          "flagged_zero": false
+        }
+      }
+    }
+  }
+}

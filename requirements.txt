@@ -1,0 +1,42 @@
+# Development and training environment. Python 3.11, Windows x64.
+# The deployed app has its own, smaller list in app/requirements.txt.
+#
+# Installed together in a Python 3.11.9 venv on 2026-11-21: `pip check` is clean
+# and every package imports. On Windows the PyPI torch wheel is the CPU build.
+#
+# GPU training (optional): the development machine has an NVIDIA RTX 4080 SUPER
+# (driver 621.01). After installing this file, the CUDA build of the same torch
+# version replaces the CPU one:
+#   pip install "torch==2.15.0+cu134" --index-url https://download.pytorch.org/whl/cu134 --no-deps
+# The deployed app does not use torch at all; it runs the ONNX export on CPU.
+
+# Data
+numpy==2.4.6
+pandas==2.3.3
+pyarrow==26.0.1
+datasets==5.2.0
+huggingface_hub==2.4.0
+ucimlrepo==0.0.7
+
+# Models
+scikit-learn==1.9.1
+lightgbm==4.7.0
+optuna==5.1.0
+torch==2.15.0
+onnx==1.23.2
+onnxruntime==1.32.0
+
+# Evaluation and charts
+shap==0.51.0
+matplotlib==3.11.2
+
+# Notebooks
+jupyterlab==4.6.6
+ipykernel==7.4.0
+nbconvert==7.17.2
+
+# Tests
+pytest==9.2.0
+
+# App (for running app/app.py locally)
+gradio==6.32.0

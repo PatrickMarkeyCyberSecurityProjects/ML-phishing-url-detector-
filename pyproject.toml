@@ -1,0 +1,10 @@
+[project]
+name = "phishing-url-detector"
+version = "0.1.0"
+description = "Scores a URL string as phishing or legitimate and measures cross-dataset generalization."
+requires-python = ">=3.11,<3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
